@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="container">
+  <div class="row mx-auto">
+      <form action="" method="POST">{% csrf_token %}
+          <script
+          src="https://js.paystack.co/v1/inline.js" 
+          data-key="{{data_key}}"
+          data-email="{{data_email}}"
+          data-amount="{{paystack_total}}"
+        >
+        </script>
+      </form>
+  </div>
+  
+</div>
+
+
+{% endblock %}

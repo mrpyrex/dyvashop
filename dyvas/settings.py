@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # Third Party Apps
     'crispy_forms',
+    'pypaystack',
 ]
 
 MIDDLEWARE = [

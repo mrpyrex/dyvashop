@@ -4,7 +4,6 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from .tasks import order_created
 from cart.cart import Cart
-from pypaystack import Transaction, Customer, Plan
 from django.conf import settings
 
 def order_create(request):
@@ -21,13 +20,7 @@ def order_create(request):
             cart.clear()
             order_created.delay(order.id)
             request.session['order_id'] = order.id
-
-            # context = {
-            #     'order':order,
-            #     'data_key':data_key,
-            #     'paystack_total':paystack_total
-            # }
-            return render(request, 'orders\order\created.html')
+            return redirect(reverse('payment:process'))
 
     else:
         form = OrderCreateForm()
