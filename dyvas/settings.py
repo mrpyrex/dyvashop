@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     
     # Project Apps
+    'accounts',
     'cart',
     'orders',
     'shop',
@@ -151,3 +152,17 @@ CART_SESSION_ID = 'cart'
 PAYSTACK_SECRET_KEY = 'sk_test_9fa4f81ec689f832c1670c03cf1fbeab5e991e11'
 
 PAYSTACK_PUBLIC_KEY = 'pk_test_dcb70f47c7cb97a6c864b568900020f52e587876'
+
+# Login URLs
+LOGIN_REDIRECT_URL  = 'shop:product_list'
+LOGIN_URL           = 'login'
+
+
+# Email Settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = ''
