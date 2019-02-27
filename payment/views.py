@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from django.urls import reverse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from orders.models import Order
 from cart.cart import Cart
 from pypaystack import Transaction, Customer, Plan
@@ -24,8 +24,7 @@ def payment_process(request):
     paystack_total      = int(order.get_total_cost() * 100)
     data_key            = settings.PAYSTACK_PUBLIC_KEY
     data_email          = order.email
-    return_url          = 'http://{}{}'.format(host, reverse('payment:payment-done'))
-
+    return_url          = 'http://{}{}'.format(host, reverse('payment:done'))
     context = {
         'order': order,
         'paystack_total': paystack_total,

@@ -5,6 +5,6 @@ app_name = 'payment'
 
 urlpatterns = [
     path('process/', views.payment_process, name='process'),
-    path('done/', views.payment_done, name='payment-done'),
+    path('done/', views.payment_done, name='done'),
     path('cancelled/', views.payment_cancel, name='payment-cancelled'),
 ]
