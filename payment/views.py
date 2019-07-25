@@ -7,10 +7,12 @@ from cart.cart import Cart
 from pypaystack import Transaction, Customer, Plan
 from django.views.decorators.csrf import csrf_exempt
 
+
 # Create your views here.
 @csrf_exempt
 def payment_done(request):
     return render(request, 'payment/done.html')
+
 
 @csrf_exempt
 def payment_cancel(request):
@@ -18,13 +20,13 @@ def payment_cancel(request):
 
 
 def payment_process(request):
-    order_id            = request.session.get('order_id')
-    order               = get_object_or_404(Order, id=order_id)
-    host                = request.get_host()
-    paystack_total      = int(order.get_total_cost() * 100)
-    data_key            = settings.PAYSTACK_PUBLIC_KEY
-    data_email          = order.email
-    return_url          = 'http://{}{}'.format(host, reverse('payment:done'))
+    order_id = request.session.get('order_id')
+    order = get_object_or_404(Order, id=order_id)
+    host = request.get_host()
+    paystack_total = int(order.get_total_cost() * 100)
+    data_key = settings.PAYSTACK_PUBLIC_KEY
+    data_email = order.email
+    return_url = 'http://{}{}'.format(host, reverse('payment:done'))
     context = {
         'order': order,
         'paystack_total': paystack_total,
