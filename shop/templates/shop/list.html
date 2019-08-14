@@ -1,31 +1,29 @@
 {% extends 'base.html' %}
 {% load humanize %}
-{% block content %}        
-    <main role="main">
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    {% for product in products %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-                            <div class="card-body">
+{% block content %}
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                        <div class="card-body">
                             <p class="card-text">{{ product.name }}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{{product.get_absolute_url}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                                
+                                    <a href="{{product.get_absolute_url}}"><button type="button"
+                                            class="btn btn-sm btn-outline-secondary">View</button></a>
                                 </div>
                                 <small class="text-muted">&#8358; {{ product.price|intcomma }}</small>
                             </div>
-                            </div>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
-    </main>
+    </div>
+</main>
 {% endblock %}
-
-
