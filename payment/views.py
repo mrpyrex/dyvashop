@@ -27,6 +27,9 @@ def payment_process(request):
     data_key = settings.PAYSTACK_PUBLIC_KEY
     data_email = order.email
     return_url = 'http://{}{}'.format(host, reverse('payment:done'))
+    if request.method == 'POST':
+        print(request.POST)
+        # 'paystack-trxref'
     context = {
         'order': order,
         'paystack_total': paystack_total,
